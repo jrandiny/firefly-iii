@@ -20,9 +20,11 @@
         <a href="{{ route('administrations.index') }}" class="dropdown-item">
             <em class="bi bi-journals me-2"></em> {{ __('firefly.administrations_index_menu') }}
         </a>
-        <div class="dropdown-divider"></div>
-        <a href="{{ route('settings.index') }}" class="dropdown-item">
-            <em class="bi bi-cpu me-2"></em> {{ __('firefly.system_settings') }}
-        </a>
+        @if(auth()->user()?->hasRole('owner'))
+            <div class="dropdown-divider"></div>
+            <a href="{{ route('settings.index') }}" class="dropdown-item">
+                <em class="bi bi-cpu me-2"></em> {{ __('firefly.system_settings') }}
+            </a>
+        @endif
     </div>
 </li>
